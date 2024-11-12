@@ -19,7 +19,7 @@ type ShopWithCategories struct {
 }
 
 func (app *App) GetShops(limit, offset int) ([]ShopWithCategories, error) {
-	// SQL-запрос для получения данных о магазинах и категориях
+
 	query := `
         SELECT s.id, s.name, s.image, s.price, s.description, c.name AS category_name
         FROM shops s
@@ -106,15 +106,6 @@ func (app *App) InsertShop(name, image string, price int, description string) {
 	fmt.Println("Данные успешно добавлены!")
 }
 
-// Функция для добавления нескольких записей
-func (app *App) CreateTableWithShops() {
-	app.InsertShop("Магазин 1", "картинка1.jpeg", 100, "Описание 1")
-	app.InsertShop("Магазин 2", "картинка2.jpeg", 200, "Описание 2")
-	app.InsertShop("Магазин 3", "картинка3.jpeg", 300, "Описание 3")
-	app.InsertShop("Магазин 4", "картинка4.jpeg", 400, "Описание 4")
-	app.InsertShop("Магазин 5", "картинка5.jpeg", 500, "Описание 5")
-	app.InsertShop("Магазин 6", "картинка6.jpeg", 600, "Описание 6")
-}
 func (app *App) CreateNewShop(shop Shop) (int, error) {
 	query := `INSERT INTO shops (name, image, price, description) VALUES ($1, $2, $3, $4) RETURNING id`
 	var shopID int
