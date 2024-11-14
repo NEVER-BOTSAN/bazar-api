@@ -38,16 +38,8 @@ docker run --name bazar-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=
 docker start bazar-postgres
 ```
 ## Структура магазина
-У каждого магазина есть свой id , наименование, фото , стоимость , описание. Все эти характеристики образуют собой структуру Shop:
-```go
-type Shop struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Image       string `json:"image"`
-	Price       int    `json:"price"`
-	Description string `json:"description"`
-} 
-```
+
+
 Также для распределения магазинов есть категории , которые имеют следующую структуру:
 ```go 
 type Category struct {
